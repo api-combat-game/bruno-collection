@@ -1,0 +1,36 @@
+meta {
+  name: Create Team
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/team/configure
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "McMick's Squad",
+    "unitIds": [
+      "PASTE_UNIT_ID_1",
+      "PASTE_UNIT_ID_2",
+      "PASTE_UNIT_ID_3"
+    ],
+    "strategy": {
+      "formation": "balanced",
+      "targetPriority": ["lowest_hp", "healers"]
+    }
+  }
+}
+
+script:post-response {
+  if (res.status === 201) {
+    bru.setEnvVar("teamId", res.body.id);
+  }
+}
