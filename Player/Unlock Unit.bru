@@ -1,0 +1,21 @@
+meta {
+  name: Unlock Unit
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/player/roster/unlock
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "templateUnitId": "PASTE_UNIT_ID_FROM_SHOP"
+  }
+}
