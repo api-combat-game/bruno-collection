@@ -1,0 +1,26 @@
+meta {
+  name: Register
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/auth/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "McMick",
+    "email": "your@email.com",
+    "password": "SecurePass1!"
+  }
+}
+
+script:post-response {
+  if (res.status === 201) {
+    bru.setEnvVar("token", res.body.token);
+    bru.setEnvVar("playerId", res.body.playerId);
+  }
+}
