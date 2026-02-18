@@ -1,0 +1,15 @@
+meta {
+  name: Get Roster
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/player/roster
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
