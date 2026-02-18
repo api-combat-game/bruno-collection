@@ -1,0 +1,31 @@
+meta {
+  name: Update Team
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/team/{{teamId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "McMick's Squad v2",
+    "unitIds": [
+      "PASTE_UNIT_ID_1",
+      "PASTE_UNIT_ID_2",
+      "PASTE_UNIT_ID_3"
+    ],
+    "strategy": {
+      "formation": "aggressive",
+      "targetPriority": ["healers", "lowest_hp"],
+      "abilities": {}
+    }
+  }
+}
